@@ -29,11 +29,11 @@ Then(/^URL should match (.*)$/, async function (ExpectedURL) {
 /**
  * Web Interactions
  */
-Given(/^A web page is opened$/, async function(){
+/**Given(/^A web page is opened$/, async function(){
     await browser.url("https://the-internet.herokuapp.com/frames")
     await browser.setTimeout({implicit: 15000, pageLoad: 10000})
     await browser.maximizeWindow()
-})
+})*/
 
 /**When(/^Perform web interactions$/, async function(){
     let ele = await $(`[type=number]`)
@@ -239,15 +239,15 @@ await browser.debug()
     2. switchToParentFrame
     */
    
-    When (/^Perform web interactions$/, async function(){
-        await (await $(`=iFrame`)).click()
+    /** When (/^Perform web interactions$/, async function(){
+        await  $(`=iFrame`).click()
         let ele = await $(`#mce_0_ifr`)
         await browser.switchToFrame(ele)
         //Interaction with frames...
         await $(`#tinymce`).addValue(`Typing into a frame...`)
         await browser.switchToParentFrame()
         await browser.debug()
-    })
+    })*/
 
 
     /* 7.Key*/
@@ -266,6 +266,8 @@ await browser.debug()
         await browser.debug()
     })*/
 
+    
+    
     
 
     
