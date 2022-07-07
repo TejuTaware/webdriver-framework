@@ -5,7 +5,8 @@
     "main": "index.js",
     "scripts": {
         "test": "echo \"Error: no test specified\" && exit 1",
-        "wdio": "wdio run test/wdio.conf.ts"
+        "wdio": "wdio run test/wdio.conf.ts",
+        "demo": "npx wdio run test/wdio.conf.ts --cucumberOpts.tagExpression='@demo"
     },
     "keywords": [],
     "author": "",

@@ -1,15 +1,15 @@
 {
-    "sessionId": "47d11ef11359dd29cca551f80cc85c4e",
+    "sessionId": "5d01fe62d624fd3fda3241e8984170fb",
     "capabilities": {
         "acceptInsecureCerts": true,
         "browserName": "chrome",
         "browserVersion": "103.0.5060.114",
         "chrome": {
             "chromedriverVersion": "103.0.5060.53 (a1711811edd74ff1cf2150f36ffa3b0dae40b17f-refs/branch-heads/5060@{#853})",
-            "userDataDir": "C:\\Users\\baps\\AppData\\Local\\Temp\\scoped_dir17716_36742379"
+            "userDataDir": "C:\\Users\\baps\\AppData\\Local\\Temp\\scoped_dir12296_147573974"
         },
         "goog:chromeOptions": {
-            "debuggerAddress": "localhost:59893"
+            "debuggerAddress": "localhost:50814"
         },
         "networkConnectionEnabled": false,
         "pageLoadStrategy": "normal",
@@ -33,7 +33,7 @@
         ],
         "suites": {},
         "exclude": [],
-        "logLevel": "error",
+        "logLevel": "info",
         "logLevels": {},
         "excludeDriverLogs": [],
         "bail": 0,
@@ -41,7 +41,13 @@
         "waitforTimeout": 10000,
         "framework": "cucumber",
         "reporters": [
-            "spec"
+            "spec",
+            [
+                "allure",
+                {
+                    "outputDir": "allure-results"
+                }
+            ]
         ],
         "services": [
             "chromedriver"
@@ -64,7 +70,7 @@
             "autoCompile": true,
             "tsNodeOpts": {
                 "transpileOnly": true,
-                "project": "tsconfig.json"
+                "project": "test/tsconfig.json"
             },
             "babelOpts": {}
         },
@@ -112,10 +118,12 @@
         "afterStep": [],
         "afterScenario": [],
         "afterFeature": [],
+        "baseUrl": "http://localhost",
         "_": [
-            "wdio.conf.ts"
+            "run"
         ],
         "$0": "node_modules\\@wdio\\cli\\bin\\wdio.js",
+        "config-path": "test/wdio.conf.ts",
         "ignoredWorkerServices": []
     }
 }

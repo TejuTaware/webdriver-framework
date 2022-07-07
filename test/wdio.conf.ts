@@ -87,7 +87,11 @@ export const config: Options.Testrunner = {
         //
         browserName: 'chrome',
         acceptInsecureCerts: true,
-        timeouts: { implicit: 15000, pageLoad: 20000, script: 30000 },
+        timeouts: {
+            implicit: 15000,
+            pageLoad: 20000,
+            script: 30000
+        },
         // If outputDir is provided WebdriverIO can capture driver session logs
         // it is possible to configure which logTypes to include/exclude.
         // excludeDriverLogs: ['*'], // pass '*' to exclude all driver session logs
@@ -185,7 +189,7 @@ export const config: Options.Testrunner = {
         // <boolean> fail if there are any undefined or pending steps
         strict: false,
         // <string> (expression) only execute the features or scenarios with tags matching the expression
-        tagExpression: '@demo',
+        tagExpression: '',
         // <number> timeout for step definitions
         timeout: 60000,
         // <boolean> Enable this config to treat undefined definitions as warnings.

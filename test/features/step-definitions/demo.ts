@@ -1,13 +1,13 @@
 import { Given, When, Then} from "@cucumber/cucumber";
 import {expect} from "chai"
-import { escapeLeadingUnderscores } from "typescript";
+
 
   Given(/^Google page is opened$/, async function () {
     console.log(`Before opening browser...`);
     await browser.url("https://www.google.com")
     await browser.pause(1000)
     console.log(`After opening browser...`);
-    console.log(`>> BrowserObj: ${JSON.stringify(browser)}`);
+    
 })
 
 When(/^Search with (.*)$/,async function (searchItem) {
@@ -15,19 +15,22 @@ When(/^Search with (.*)$/,async function (searchItem) {
     let ele = await $(`[name=q]`)
     await ele.setValue(searchItem)
     await browser.keys("Enter")
-    console.log(`>> BrowserObj: ${JSON.stringify(ele)}`);
+    
 })
 
-/**Then(/^Click on the first search result$/,async function () {
+Then(/^Click on the first search result$/,async function () {
      let ele = await $(`<h3>`)
      ele.click()
 })
 
 Then(/^URL should match (.*)$/, async function (ExpectedURL) {
     console.log(`>> expectedURL: ${ExpectedURL}`);
+    await browser.waitUntil(async function () {
+        return await browser.getTitle() === "Next-gen browser and mobile automation test framework for Node.js"}
+        , {timeout: 20000, interval: 500, timeoutMsg: `Failed loading WDIO web page: ${await browser.getTitle()}`}) 
     let url = await browser.getUrl()
     expect(url).to.equal(ExpectedURL)
-})*/
+})
 /**
  * Web Interactions
  */

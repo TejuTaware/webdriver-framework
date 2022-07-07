@@ -1,20 +1,20 @@
- {
-    "sessionId": "8964b0d048361fb395b09e965ff72333",
-    "elementId": "e8a5e81a-cb08-4969-bf18-fb0d5a0d843b",
-    "element-6066-11e4-a52e-4f735466cecf": "e8a5e81a-cb08-4969-bf18-fb0d5a0d843b",
+{
+    "sessionId": "5c6129147bbd21966ae513eba07ec4e5",
+    "elementId": "44843e86-0692-477f-9268-0b72a1d7ca57",
+    "element-6066-11e4-a52e-4f735466cecf": "44843e86-0692-477f-9268-0b72a1d7ca57",
     "selector": "[name=q]",
     "parent": {
-        "sessionId": "8964b0d048361fb395b09e965ff72333",
+        "sessionId": "5c6129147bbd21966ae513eba07ec4e5",
         "capabilities": {
             "acceptInsecureCerts": true,
             "browserName": "chrome",
             "browserVersion": "103.0.5060.114",
             "chrome": {
                 "chromedriverVersion": "103.0.5060.53 (a1711811edd74ff1cf2150f36ffa3b0dae40b17f-refs/branch-heads/5060@{#853})",
-                "userDataDir": "C:\\Users\\baps\\AppData\\Local\\Temp\\scoped_dir1812_1176369643"
+                "userDataDir": "C:\\Users\\baps\\AppData\\Local\\Temp\\scoped_dir7008_1406399641"
             },
             "goog:chromeOptions": {
-                "debuggerAddress": "localhost:55536"
+                "debuggerAddress": "localhost:52142"
             },
             "networkConnectionEnabled": false,
             "pageLoadStrategy": "normal",
@@ -23,8 +23,8 @@
             "setWindowRect": true,
             "strictFileInteractability": false,
             "timeouts": {
-                "implicit": 0,
-                "pageLoad": 300000,
+                "implicit": 15000,
+                "pageLoad": 20000,
                 "script": 30000
             },
             "unhandledPromptBehavior": "dismiss and notify",
@@ -38,7 +38,7 @@
             ],
             "suites": {},
             "exclude": [],
-            "logLevel": "error",
+            "logLevel": "info",
             "logLevels": {},
             "excludeDriverLogs": [],
             "bail": 0,
@@ -46,7 +46,13 @@
             "waitforTimeout": 10000,
             "framework": "cucumber",
             "reporters": [
-                "spec"
+                "spec",
+                [
+                    "allure",
+                    {
+                        "outputDir": "allure-results"
+                    }
+                ]
             ],
             "services": [
                 "chromedriver"
@@ -69,7 +75,7 @@
                 "autoCompile": true,
                 "tsNodeOpts": {
                     "transpileOnly": true,
-                    "project": "tsconfig.json"
+                    "project": "test/tsconfig.json"
                 },
                 "babelOpts": {}
             },
@@ -117,12 +123,13 @@
             "afterStep": [],
             "afterScenario": [],
             "afterFeature": [],
+            "baseUrl": "http://localhost",
             "_": [
-                "wdio.conf.ts"
+                "run"
             ],
             "$0": "node_modules\\@wdio\\cli\\bin\\wdio.js",
+            "config-path": "test/wdio.conf.ts",
             "ignoredWorkerServices": []
         }
     },
-    "isReactElement": false
-}
+    "isReactElement":false}
