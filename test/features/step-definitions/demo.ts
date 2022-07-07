@@ -10,7 +10,7 @@ import {expect} from "chai"
     
 })
 
-When(/^Search with (.*)$/,async function (searchItem) {
+/**When(/^Search with (.*)$/,async function (searchItem) {
     console.log(`>> searchItem: ${searchItem}`);
     let ele = await $(`[name=q]`)
     await ele.setValue(searchItem)
