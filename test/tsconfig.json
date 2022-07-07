@@ -1,6 +1,6 @@
 {
     "compilerOptions": {
-        "module": "esnext",
+        "esModuleInterop": true,
         "moduleResolution": "node",
         "types": [
             "node",
@@ -8,6 +8,7 @@
             "@wdio/cucumber-framework",
             "expect-webdriverio"
         ],
-        "target": "es2019"
+        "target": "ES2019",
+        "module": "CommonJS"
     }
 }
