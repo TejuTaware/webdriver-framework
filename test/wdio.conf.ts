@@ -1,6 +1,8 @@
-import type { Options } from '@wdio/types'
 
-export const config: Options.Testrunner = {
+import type { Options } from '@wdio/types'
+let headless = process.env.HEADLESS
+console.log(`>> The headless flag: ${headless}`);
+export const config:Options.Testrunner = {
     //
     // ====================
     // Runner Configuration
@@ -83,9 +85,22 @@ export const config: Options.Testrunner = {
         // maxInstances can get overwritten per capability. So if you have an in-house Selenium
         // grid with only 5 firefox instances available you can make sure that not more than
         // 5 instances get started at a time.
+        /**Additional chrome options:
+        *--headless
+        *--disable-dev-shm-usage
+        *--no-sandbox
+        *--window-size=1920,1080
+        *--disable-gpu
+        *--proxy-server
+        *binary=<location>
+        *--auth-server-whitelist="_"
+        */
         maxInstances: 5,
         //
         browserName: 'chrome',
+        "goog:chromeOptions":{
+            args: headless.toUpperCase() === "Y" ? ["--disable-web-security","--headless","--disable-dev-shm-usage","--no-sandbox","--window-size=1920,1080"] : []
+        },
         acceptInsecureCerts: true,
         timeouts: {
             implicit: 15000,
@@ -128,7 +143,7 @@ export const config: Options.Testrunner = {
     // with `/`, the base url gets prepended, not including the path portion of your baseUrl.
     // If your `url` parameter starts without a scheme or `/` (like `some/path`), the base url
     // gets prepended directly.
-    baseUrl: 'http://localhost',
+    baseUrl: '',
     //
     // Default timeout for all waitFor* commands.
     waitforTimeout: 10000,
@@ -272,8 +287,14 @@ export const config: Options.Testrunner = {
      * @param {ITestCaseHookParameter} world    world object containing information on pickle and test step
      * @param {Object}                 context  Cucumber World object
      */
-    // beforeScenario: function (world, context) {
-    // },
+     beforeScenario: function (world, context) {
+        //console.log(`>> World: ${JSON.stringify(world)}`);
+        let arr = world.pickle.name.split(/:/)
+        //@ts-ignore
+        if(arr.length > 0) browser.config.testid = arr[0]
+        //@ts-ignore
+        if(!browser.config.testid) throw Error(`Error getting testid for current scenario: ${world.pickle.name}`)
+    },
     /**
      *
      * Runs before a Cucumber Step.
@@ -294,8 +315,15 @@ export const config: Options.Testrunner = {
      * @param {number}             result.duration  duration of scenario in milliseconds
      * @param {Object}             context          Cucumber World object
      */
-    // afterStep: function (step, scenario, result, context) {
-    // },
+     afterStep: async function (step, scenario, result, context) {
+        console.log(`>> step: ${JSON.stringify(step)}`);
+        console.log(`>> scenario: ${JSON.stringify(scenario)}`);
+        console.log(`>> result: ${JSON.stringify(result)}`);
+        //Take screenshot if failed
+        if(!result.passed){
+            await browser.takeScreenshot()
+        }
+     },
     /**
      *
      * Runs after a Cucumber Scenario.

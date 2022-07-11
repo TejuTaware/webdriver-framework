@@ -4,8 +4,8 @@
     "description": "",
     "main": "index.js",
     "scripts": {
-        
-        "demo": "npx wdio run test/wdio.conf.ts --cucumberOpts.tagExpression='@demo'"
+        "test:demo": "set HEADLESS=N && npx wdio config/wdio.test.conf.ts --cucumberOpts.tagExpression='@demo'",
+        "test:smoke": "set HEADLESS=N && npx wdio config/wdio.test.conf.ts --cucumberOpts.tagExpression='@smoke'"
     },
     "keywords": [],
     "author": "",
@@ -19,8 +19,13 @@
         "@wdio/spec-reporter": "^7.20.3",
         "chai": "^4.3.6",
         "chromedriver": "^103.0.0",
+        "dotenv": "^16.0.1",
         "ts-node": "^10.8.1",
         "typescript": "^4.7.4",
-        "wdio-chromedriver-service": "^7.3.2"
+        "wdio-chromedriver-service": "^7.3.2",
+        "winston": "^3.8.1"
+    },
+    "dependencies": {
+        "app-root-path": "^3.0.0"
     }
 }
