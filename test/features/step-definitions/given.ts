@@ -14,7 +14,7 @@ Given(/^As (a|am) (.*) user I Login to inventory web app$/, async function (pref
         reporter.addStep(this.testid, "info","login to sauce demo")
         let dt = dataTable.hashes()
        //@ts-ignore
-        await browser.url(config.sauseDemoURL);
+        await sauseHomePage.navigateTo("https://www.saucedemo.com/");
         await sauseHomePage.loginToSauseApp(this.testid, process.env.TEST_STD_USERNAME, process.env.TEST_STD_PASSWORD)   
     } catch (err) {
        err.message = `${this.testid}: Failed at login step, ${err.message}`
